@@ -1,11 +1,15 @@
+// Indicar como debe comportarse Typescript en el proyecto
+// Define versión de JS
+// Restricciones de tipado
+
 {
-  "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noEmit": true,
+  "compilerOptions": { // opciones del compilador
+    "target": "ES2017", // versión de JS a la que se compilará
+    "lib": ["dom", "dom.iterable", "esnext"], // librerías incluidas
+    "allowJs": true, // permite archivos JS
+    "skipLibCheck": true, // omite verificación de tipos en archivos de declaración
+    "strict": true, // habilita todas las verificaciones estrictas de tipo
+    "noEmit": true, // no genera archivos de salida al momento de compilar
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
@@ -19,7 +23,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"] // alias para rutas absolutas, @ -> siempre apunta a la raiz
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

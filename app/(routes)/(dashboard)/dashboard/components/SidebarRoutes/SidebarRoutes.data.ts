@@ -21,11 +21,11 @@ export const dataAdminSidebar = [
   {
     icon: List,
     label: "Manage your cars",
-    href: "/manage-cars"
+    href: "/dashboard/admin/cars-manager"
   },
   {
     icon: ShoppingCart,
     label: "All reserves",
-    href: "/all-reserves"
+    href: "/dashboard/admin/reserves-admin"
   }
 ]
