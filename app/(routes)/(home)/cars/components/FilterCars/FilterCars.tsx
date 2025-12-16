@@ -67,7 +67,7 @@ export function FilterCars(props: FilterCarsProps) {
         </SelectContent>
       </Select>
       <Button onClick={clearFilters}>
-        Remove filters <Trash className="w-4 h-4 ml-2" />
+        Limpiar Filtros <Trash className="w-4 h-4 ml-2" />
       </Button>
     </div>
   )

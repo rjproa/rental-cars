@@ -23,15 +23,15 @@ export function ButtonAddCar() {
     <Dialog open={openDialog} onOpenChange={setOpenDialog}>
       <DialogTrigger asChild>
         <Button variant="outline" onClick={() => setOpenDialog(true)}>
-          Add new car
+          Agregar nuevo carro
           <PlusCircle className="ml-2" />
         </Button>
       </DialogTrigger>
       <DialogContent className="max-w-[700px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Add New Car</DialogTitle>
+          <DialogTitle>Agregar nuevo carro</DialogTitle>
           <DialogDescription>
-            Fill in the details below to add a new car to your fleet
+            Completa los detalles que tus clientes verán sobre el vehículo
           </DialogDescription>
         </DialogHeader>
         <FormAddCar setOpenDialog={setOpenDialog} />

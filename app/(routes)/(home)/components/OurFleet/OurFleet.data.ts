@@ -3,48 +3,47 @@ export const categoryOurFleet = [
     name: "Premium",
     active: true
   }, {
-    name: "Coupe",
+    name: "Coupé",
     active: false
   }, {
-    name: "Sportcar",
+    name: "Deportivo",
     active: true
   }, {
-    name: "Hypercar",
+    name: "Hiperdeportivo",
     active: false
   }, {
-    name: "Limusines",
+    name: "Limusinas",
     active: true
   }, {
-    name: "Classic",
+    name: "Clásicos",
     active: false
   },
 ];
 
 export const dataFirstBlockOurFleet = [
   {
-    url: "car-1.jpg",
+    url: "v1765676814/car-4781370_1280_vuftbf.jpg", //https://res.cloudinary.com/dkf2ptmh1/image/upload/v1765676814/car-4781370_1280_vuftbf.jpg
+  }, {
+    url: "v1765676814/car-604019_1280_nq2o1x.jpg", // https://res.cloudinary.com/dkf2ptmh1/image/upload/v1765676814/car-604019_1280_nq2o1x.jpg
 
   }, {
-    url: "car-2.jpg",
-
-  }, {
-    url: "car-3.jpg",
+    url: "v1765676814/car-8607713_1920_k0djkp.jpg", //https://res.cloudinary.com/dkf2ptmh1/image/upload/v1765676814/car-4781370_1280_vuftbf.jpg
 
   },
 ];
 
 export const dataSecondBlockOurFleet = [
   {
-    url: "car-4.jpg",
+    url: "v1765677036/car-6_ockdjo.jpg", //https://res.cloudinary.com/dkf2ptmh1/image/upload/v1765677036/car-6_ockdjo.jpg
 
   }, {
-    url: "car-5.jpg",
+    url: "v1765677009/opel-5190050_1280_gsyzaj.jpg", //https://res.cloudinary.com/dkf2ptmh1/image/upload/v1765677009/opel-5190050_1280_gsyzaj.jpg
 
   }, {
-    url: "car-6.jpg",
+    url: "v1765677009/car-5954528_1280_l92pda.jpg",//https://res.cloudinary.com/dkf2ptmh1/image/upload/v1765677009/car-5954528_1280_l92pda.jpg
 
   }, {
-    url: "car-7.jpg",
+    url: "v1765677036/car-4_sonkmu.avif", //https://res.cloudinary.com/dkf2ptmh1/image/upload/v1765677036/car-4_sonkmu.avif
 
   },
 ];

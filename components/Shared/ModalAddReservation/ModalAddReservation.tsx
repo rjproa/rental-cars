@@ -64,7 +64,7 @@ export function ModalAddReservation(props: ModalAddReservationProps) {
         </DialogHeader>
         <DialogFooter>
           <DialogClose>
-            cancel
+            cancelar
           </DialogClose>
           <DialogClose asChild>
             <Button onClick={() => onReserveCar(car, dateSelected)}>

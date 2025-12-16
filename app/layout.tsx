@@ -11,8 +11,16 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Admin rental cars",
-  description: "Rental cars platform by React with Next.js",
+  title: {
+    default: "Inka Rent",
+    template: "%s | Inka Rent"
+  },
+  description: "Plataforma de alquiler de vehículos",
+
+  icons: {
+    icon: '/favicon.ico?v=3',
+    shortcut: '/favicon.ico?v=3',
+  },
 };
 
 export default function RootLayout({

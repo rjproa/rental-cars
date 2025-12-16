@@ -18,8 +18,7 @@ import { Input } from "@/components/ui/input"
 import { formSchema } from "./FormAddCar.form"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { UploadButton } from "@/utils/uploadthing"
-import { use, useState } from "react"
-import { error } from "console"
+import { useState } from "react"
 import { FormAddCarProps } from "./FormAddCar.types";
 import { toast } from "sonner";
 import axios from 'axios'
@@ -73,7 +72,7 @@ export function FormAddCar(props: FormAddCarProps) {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Car name</FormLabel>
+                <FormLabel>Modelo</FormLabel>
                 <FormControl>
                   <Input placeholder="Tesla Model S Plaid" {...field} />
                 </FormControl>
@@ -86,7 +85,7 @@ export function FormAddCar(props: FormAddCarProps) {
             name="cv"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Power</FormLabel>
+                <FormLabel>Fuerza</FormLabel>
                 <FormControl>
                   <Input placeholder="150 CV" type="number" {...field} />
                 </FormControl>
@@ -99,7 +98,7 @@ export function FormAddCar(props: FormAddCarProps) {
             name="transmission"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Transmission</FormLabel>
+                <FormLabel>Transmisión</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -107,7 +106,7 @@ export function FormAddCar(props: FormAddCarProps) {
 
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select the type of car" />
+                      <SelectValue placeholder="Tipo de transmisión" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -124,7 +123,7 @@ export function FormAddCar(props: FormAddCarProps) {
             name="people"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>People</FormLabel>
+                <FormLabel>Personas</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -132,7 +131,7 @@ export function FormAddCar(props: FormAddCarProps) {
 
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select the quantity of people" />
+                      <SelectValue placeholder="Cantidad de personas" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -151,7 +150,7 @@ export function FormAddCar(props: FormAddCarProps) {
             name="engine"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Engine</FormLabel>
+                <FormLabel>Motor</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -159,7 +158,7 @@ export function FormAddCar(props: FormAddCarProps) {
 
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select the engine of car" />
+                      <SelectValue placeholder="Motor del carro" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -178,7 +177,7 @@ export function FormAddCar(props: FormAddCarProps) {
             name="type"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Type</FormLabel>
+                <FormLabel>Tipo</FormLabel>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={field.value}
@@ -186,7 +185,7 @@ export function FormAddCar(props: FormAddCarProps) {
 
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select the type of car" />
+                      <SelectValue placeholder="Tipo de vehículo" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
@@ -206,10 +205,10 @@ export function FormAddCar(props: FormAddCarProps) {
             name="photo"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Car Image</FormLabel>
+                <FormLabel>Imagen del vehículo (640x360)px</FormLabel>
                 <FormControl>
                   {photoUploaded
-                    ? (<p className="text-sm"> Image Uploaded!</p>)
+                    ? (<p className="text-sm"> Image cargado!</p>)
                     : (<UploadButton className="rounded-lg bg-slate-600/20 text-slate-800 outline-dotted outline-3" {...field}
                       endpoint="photo"
                       onClientUploadComplete={(res) => {
@@ -231,16 +230,16 @@ export function FormAddCar(props: FormAddCarProps) {
             name="priceDay"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Price per Day</FormLabel>
+                <FormLabel>Precio por día</FormLabel>
                 <FormControl>
-                  <Input placeholder="20$" type="number" {...field} />
+                  <Input placeholder="s/ 80" type="number" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
-        <Button type="submit" className="w-full mt-5" disabled={!isValid}>Create Car</Button>
+        <Button type="submit" className="w-full mt-5" disabled={!isValid}>Crear vehículo</Button>
       </form>
     </Form>
   )

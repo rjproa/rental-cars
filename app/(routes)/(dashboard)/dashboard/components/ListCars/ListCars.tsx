@@ -18,52 +18,54 @@ export default function ListCars(props: ListCarsProps) {
 
         const likedCar = lovedItems.some((item) => item.id === car.id)
 
-        return <div key={id} className="p-1 rounded-lg shadow-md hover:shadow-lg">
-          <Image
-            src={photo}
-            alt={name}
-            width={400}
-            height={600}
-            className="rounded-lg"
-          />
+        return (
+          <div key={id} className="p-1 rounded-lg shadow-md hover:shadow-lg  max-w-[400px] w-full">
+            <Image
+              src={photo}
+              alt={name}
+              width={400}
+              height={600}
+              className="rounded-lg m-auto max-h-[200px] object-contain"
+            />
 
-          <div className="p-3">
-            <div className="flex flex-col mb-3 gap-x-4">
-              <p className="text-xl min-h-16 lg:min-h-fit">{name}</p>
-              <p>{priceDay}$ /dia</p>
-            </div>
-            <p className="flex items-center">
-              <Gem className="h-4 w-4 mr-2" strokeWidth={1} />
-              {type}
-            </p>
-            <p className="flex items-center">
-              <Wrench className="h-4 w-4 mr-2" strokeWidth={1} />
-              {transmission}
-            </p>
-            <p className="flex items-center">
-              <Users className="h-4 w-4 mr-2" strokeWidth={1} />
-              {people}
-            </p>
-            <p className="flex items-center">
-              <Fuel className="h-4 w-4 mr-2" strokeWidth={1} />
-              {engine}
-            </p>
-            <p className="flex items-center">
-              <Gauge className="h-4 w-4 mr-2" />
-              {cv} CV
-            </p>
-            <div className="flex items-center justify-center gap-x-3">
-              <ModalAddReservation car={car} />
-              <Heart
-                className={`t-2 cursor-pointer ${likedCar && "fill-black"}`}
-                onClick={likedCar
-                  ? () => removeLovedItem(car.id)
-                  : () => addLovedItem(car)
-                }
-              />
+            <div className="p-3">
+              <div className="flex flex-col mb-3 gap-x-4">
+                <p className="text-xl min-h-16 lg:min-h-fit">{name}</p>
+                <p>S/. {priceDay} dia</p>
+              </div>
+              <p className="flex items-center">
+                <Gem className="h-4 w-4 mr-2" strokeWidth={1} />
+                {type}
+              </p>
+              <p className="flex items-center">
+                <Wrench className="h-4 w-4 mr-2" strokeWidth={1} />
+                {transmission}
+              </p>
+              <p className="flex items-center">
+                <Users className="h-4 w-4 mr-2" strokeWidth={1} />
+                {people}
+              </p>
+              <p className="flex items-center">
+                <Fuel className="h-4 w-4 mr-2" strokeWidth={1} />
+                {engine}
+              </p>
+              <p className="flex items-center">
+                <Gauge className="h-4 w-4 mr-2" />
+                {cv} CV
+              </p>
+              <div className="flex items-center justify-center gap-x-3">
+                <ModalAddReservation car={car} />
+                <Heart
+                  className={`t-2 cursor-pointer ${likedCar && "fill-black"}`}
+                  onClick={likedCar
+                    ? () => removeLovedItem(car.id)
+                    : () => addLovedItem(car)
+                  }
+                />
+              </div>
             </div>
           </div>
-        </div>
+        )
 
       })}
     </div>

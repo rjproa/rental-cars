@@ -18,27 +18,19 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    console.log("Request body:", body);
-
     const { carId, priceDay, startDate, endDate, carName } = body;
 
-    if (!carId) {
-      return new NextResponse("Car id is required", { status: 400 });
-    }
-
-    if (!priceDay || !startDate || !endDate || !carName) {
-      return new NextResponse("Missing required fields", { status: 400 });
+    if (!carId || !priceDay || !startDate || !endDate || !carName) {
+      return new NextResponse("Es necesario completar los campos", { status: 400 });
     }
 
     const start = new Date(startDate);
     const end = new Date(endDate);
-
     const numberOfDays = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-    const totalAmount = numberOfDays * Number(priceDay);
 
-    console.log("Creating order:", { carId, carName, userId, totalAmount, numberOfDays });
+    let totalAmount = numberOfDays * Number(priceDay);
+    totalAmount = Math.round(totalAmount * 100) / 100;
 
-    // Crear la orden en la base de datos
     const order = await db.order.create({
       data: {
         carId,
@@ -51,67 +43,56 @@ export async function POST(req: Request) {
       }
     });
 
-    console.log("Order created:", order.id);
-
-    // Verificar que el access token existe
     if (!process.env.MERCADOPAGO_ACCESS_TOKEN) {
-      console.error("MERCADOPAGO_ACCESS_TOKEN is not defined");
-      return new NextResponse("Payment configuration error", { status: 500 });
+      console.error("MERCADOPAGO_ACCESS_TOKEN no está definido");
+      return new NextResponse("Error en la configuración de pago", { status: 500 });
     }
 
-    // Configurar MercadoPago
     const client = new MercadoPagoConfig({
       accessToken: process.env.MERCADOPAGO_ACCESS_TOKEN,
     });
 
     const preference = new Preference(client);
 
-    console.log("Creating MercadoPago preference...");
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
-    // Usar APP_URL (para el servidor) en lugar de NEXT_PUBLIC_APP_URL
-    const baseUrl = process.env.APP_URL || 'http://localhost:3000';
-    console.log("Base URL:", baseUrl); // Ahora sí debería aparecer
+    console.log("🔗 Base URL:", baseUrl);
 
     const preferenceData = await preference.create({
       body: {
         items: [
           {
             id: carId,
-            title: `Alquiler de ${carName}`,
-            description: `Alquiler por ${numberOfDays} días`,
+            title: `Alquiler ${carName}`,
+            description: `${numberOfDays} día${numberOfDays > 1 ? 's' : ''}`,
             quantity: 1,
             unit_price: totalAmount,
             currency_id: "PEN",
           }
         ],
+
         back_urls: {
-          success: `${baseUrl}/order-confirmation?orderId=${order.id}`,
-          failure: `${baseUrl}/reservation-failure?orderId=${order.id}`,
-          pending: `${baseUrl}/reservation-pending?orderId=${order.id}`,
+          success: `${baseUrl}/order-confirmation`,
+          failure: `${baseUrl}/order-error`,
+          pending: `${baseUrl}/order-confirmation`,
         },
-        // Sin auto_return por ahora
-        metadata: {
-          orderId: order.id,
-          userId: userId,
-        },
+
       }
     });
 
-    console.log("MercadoPago preference created:", preferenceData.id);
-
     return NextResponse.json({
       url: preferenceData.init_point,
-      orderId: order.id
+      orderId: order.id,
+      preferenceId: preferenceData.id
     }, {
       headers: corsHeaders
     });
 
   } catch (error) {
-    console.error("Checkout error:", error);
+    console.error("❌ Checkout error:", error);
 
-    if (error instanceof Error) {
-      console.error("Error message:", error.message);
-      console.error("Error stack:", error.stack);
+    if (typeof error === 'object' && error !== null) {
+      console.error("Full error:", JSON.stringify(error, null, 2));
     }
 
     return new NextResponse(

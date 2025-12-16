@@ -46,7 +46,7 @@ export function CalendarSelector(props: CalendarSelectorProps) {
               Días totales {daysBetween}
             </p>
             <p className="mb-4 text-md">
-              Precio total: {daysBetween * Number(carPriceDay)}$ (Imp. incluidos)
+              Precio total: s/. {daysBetween * Number(carPriceDay)} (Imp. incluidos)
             </p>
           </>
         )}

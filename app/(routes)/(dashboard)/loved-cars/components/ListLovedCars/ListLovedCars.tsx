@@ -19,12 +19,12 @@ export default function ListLovedCars() {
               const { priceDay, photo, name, type, transmission, people, engine, id, cv } = car;
 
               return (
-                <div className="p-1 rounded-lg shadow-md hover:shadow-lg" key={id}>
-                  <Image src={photo} alt="" width={400} height={400} className="rounded-lg" />
+                <div className="p-1 rounded-lg shadow-md hover:shadow-lg  max-w-[400px] w-full" key={id}>
+                  <Image src={photo} alt="" width={400} height={400} className="rounded-lg m-auto max-h-[200px] object-contain" />
                   <div className="p-3">
                     <div className="flex flex-col mb-3 gapx-4">
                       <p className="text-xl min-h-16 lg:min-h-fit">{name}</p>
-                      <p>{priceDay}$</p>
+                      <p>s/. {priceDay}</p>
                       <p className="flex items-center">
                         <Gem className="h-4 w-4 mr-2" />
                         {type}

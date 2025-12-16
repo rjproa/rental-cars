@@ -5,8 +5,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel"
 import { dataBrands } from "./SliderBrands.data";
 import { Reveal } from "@/components/Shared/Reveal";

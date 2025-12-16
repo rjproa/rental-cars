@@ -1,5 +1,11 @@
+import { Metadata } from "next";
 import { NavBarDashboard } from "./dashboard/components/NavBarDashboard";
 import { Sidebar } from "./dashboard/components/Sidebar";
+
+export const metadata: Metadata = {
+  title: "Panel",
+  description: "Panel de administración"
+}
 
 export default function LayoutDashboard({ children, }: { children: React.ReactNode; }) {
   return (

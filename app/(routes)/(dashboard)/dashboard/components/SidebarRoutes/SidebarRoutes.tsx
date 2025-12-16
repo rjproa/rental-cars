@@ -20,7 +20,7 @@ export function SidebarRoutes() {
       </div>
       {isAdministrator(userId) && (
         <div className="p-2 md:p-6">
-          <p className="mb-2 text-slate-500">ADMIN</p>
+          <p className="mb-2 text-slate-500">ADMINISTRADOR</p>
           {dataAdminSidebar.map((item) => (
             <SidebarItem key={item.label} item={item} />
           ))}

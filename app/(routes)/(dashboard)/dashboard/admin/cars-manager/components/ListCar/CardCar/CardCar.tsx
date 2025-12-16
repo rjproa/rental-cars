@@ -17,10 +17,10 @@ export function CardCar(props: CardCarProps) {
   const deleteCar = async () => {
     try {
       await axios.delete(`/api/car/${car.id}`);
-      toast.info('Car Deleted');
+      toast.info('Vehículo eliminado');
       router.refresh();
     } catch (error) {
-      toast.error('Something went wrong');
+      toast.error('Sucedió un error');
       console.log(error);
     }
   }
@@ -30,43 +30,43 @@ export function CardCar(props: CardCarProps) {
       await axios.patch(`/api/car/${car.id}`, { isPublish: publish });
 
       if (publish) {
-        toast.info('Car Published');
+        toast.info('Vehículo publicado');
       } else {
-        toast.info('Car Unpublish')
+        toast.info('Vehículo deshabilitado')
       }
       router.refresh();
     } catch (error) {
-      toast.error('Somethin went wrong');
+      toast.error('Sucedió un error');
       console.log(error);
 
     }
   }
 
   return (
-    <div className="relative p-1 bg-white rounded-lg shadow-md hover:shadow-ls">
+    <div className="relative p-1 bg-white rounded-lg shadow-md hover:shadow-ls max-w-[400px] w-full">
       <Image
         src={car.photo}
         alt={car.name}
         width={400}
         height={600}
-        className="rounded-lg"
+        className="rounded-lg m-auto max-h-[200px] object-contain"
       />
       {
         car.isPublish
-          ? (<p className="absolute top-0 right-0 w-full text-center text-white bg-green-700 rounded-t-lg">Published</p>)
-          : (<p className="absolute top-0 right-0 w-full text-center text-white bg-red-300 rounded-t-lg">Not Published</p>)
+          ? (<p className="absolute top-0 right-0 w-full text-center text-white bg-green-700 rounded-t-lg">Publicado</p>)
+          : (<p className="absolute top-0 right-0 w-full text-center text-white bg-red-300 rounded-t-lg">Deshabilitado</p>)
       }
       <div className="relative p-3">
         <div className="flex flex-col mb-3 gap-x-4">
           <p className="text-xl min-h-16 lg:min-h-fit">{car.name}</p>
-          <p>{car.priceDay}$ /dia</p>
+          <p>s/. {car.priceDay} dia</p>
         </div>
         <div className="grid md:grid-cols-2 gap-x-4">
           <p className="flex items-center">
             <Gem className="h-4 w-4 mr-2" strokeWidth={1} />
             {car.type}
           </p>
-          <p className="flex items-center">
+          <p className="flex items-center justify-end">
             <Wrench className="h-4 w-4 mr-2" strokeWidth={1} />
             {car.transmission}
           </p>
@@ -74,18 +74,18 @@ export function CardCar(props: CardCarProps) {
             <Users className="h-4 w-4 mr-2" strokeWidth={1} />
             {car.people}
           </p>
-          <p className="flex items-center">
+          <p className="flex items-center justify-end">
             <Fuel className="h-4 w-4 mr-2" strokeWidth={1} />
             {car.engine}
           </p>
-          <p className="flex items-center">
+          <p className="flex items-center ">
             <Gauge className="h-4 w-4 mr-2" strokeWidth={1} />
             {car.cv}
           </p>
         </div>
       </div>
       <div className="flex justify-between mt-3 gap-x-4">
-        <Button variant="outline" onClick={deleteCar}>Delete <Trash className="w-4 h-4 ml-2" /></Button>
+        <Button variant="outline" onClick={deleteCar}>Eliminar <Trash className="w-4 h-4 ml-2" /></Button>
         <ButtonEditCar carData={car} />
       </div>
       {
@@ -96,7 +96,7 @@ export function CardCar(props: CardCarProps) {
               variant="outline"
               onClick={() => handlePublishCar(false)}
             >
-              Unpublish
+              Deshabilitar
               <Upload className="w-4 h-4 ml-2" />
             </Button>
           )
@@ -105,7 +105,7 @@ export function CardCar(props: CardCarProps) {
               className="w-full mt-3"
               onClick={() => handlePublishCar(true)}
             >
-              Publish
+              Publicar
               <Upload className="w-4 h-4 ml-2" />
             </Button>
           )
@@ -113,5 +113,3 @@ export function CardCar(props: CardCarProps) {
     </div>
   )
 }
-
-//  2:32:46

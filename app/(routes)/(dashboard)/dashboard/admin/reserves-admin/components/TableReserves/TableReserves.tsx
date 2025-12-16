@@ -21,15 +21,15 @@ export function TableReserves(props: TableReservesProps) {
 
   return (
     <Table>
-      <TableCaption>A list of your recent booking.</TableCaption>
+      <TableCaption>Lista de todas las reservas</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead>Order Date</TableHead>
-          <TableHead>Customer ID</TableHead>
-          <TableHead>Car</TableHead>
-          <TableHead>Date Start</TableHead>
-          <TableHead>Date End</TableHead>
-          <TableHead className="text-right">Amount</TableHead>
+          <TableHead>Fecha de orden</TableHead>
+          <TableHead>ID Cliente</TableHead>
+          <TableHead>Vehículo</TableHead>
+          <TableHead>Fecha inicio</TableHead>
+          <TableHead>Fecha final</TableHead>
+          <TableHead className="text-right">Monto</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

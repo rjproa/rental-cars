@@ -15,13 +15,13 @@ export function ButtonEditCar(props: ButtonEditCarProps) {
     <Dialog open={openDialog}>
       <DialogTrigger asChild>
         <Button variant='outline' onClick={() => setOpenDialog(true)}>
-          Edit
+          Editar
           <Pencil className="w-4 h-4 ml-2" />
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit Car</DialogTitle>
+          <DialogTitle>Editar carro</DialogTitle>
           <DialogDescription asChild>
             <FormEditCar setOpenDialog={setOpenDialog} carData={carData} />
           </DialogDescription>
