@@ -2,10 +2,13 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-export async function PATCH(req: Request, { params }: { params: { carId: string } }) {
+export async function PATCH(
+  req: Request,
+  { params }: { params: Promise<{ carId: string }> }
+) {
   try {
     const { userId } = await auth();
-    const { carId } = params;
+    const { carId } = await params; // Ahora hacemos await de params
     const values = await req.json();
 
     if (!userId) {
@@ -26,7 +29,5 @@ export async function PATCH(req: Request, { params }: { params: { carId: string 
   } catch (error) {
     console.log("[CAR FORM ID]", error);
     return new NextResponse("Internal Error", { status: 500 });
-
   }
-
-};
+}
