@@ -6,6 +6,7 @@ Plataforma moderna y completa para la gestión y alquiler de vehículos en Perú
   <img src="./assets/screenshots/home.png" width="400" />
 </p>
 
+Página desplegada en *Vercel* : https://rental-cars-ivory.vercel.app/
 
 ## 📋 Tabla de Contenidos
 
@@ -13,13 +14,6 @@ Plataforma moderna y completa para la gestión y alquiler de vehículos en Perú
 - [Tecnologías Utilizadas](#-tecnologías-utilizadas)
 - [Servicios Integrados](#-servicios-integrados)
 - [Capturas de Pantalla](#-capturas-de-pantalla)
-- [Instalación](#-instalación)
-- [Configuración](#-configuración)
-- [Estructura del Proyecto](#-estructura-del-proyecto)
-- [Variables de Entorno](#-variables-de-entorno)
-- [Scripts Disponibles](#-scripts-disponibles)
-- [Despliegue](#-despliegue)
-- [Contribuir](#-contribuir)
 - [Licencia](#-licencia)
 
 ---
